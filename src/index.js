@@ -39,6 +39,14 @@ async function authMiddleware(req, res, next) {
   }
 }
 
+app.get('/', (_req, res) => {
+  res.json({
+    ok: true,
+    service: 'smart-task-planner-backend',
+    endpoints: { health: '/health', tasks: '/tasks (requires Bearer token)' },
+  });
+});
+
 app.get('/health', (_req, res) => {
   res.json({ ok: true, service: 'smart-task-planner-backend' });
 });
